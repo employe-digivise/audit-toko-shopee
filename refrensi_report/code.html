@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Audit Eksternal Shopee - Laporan Hasil Audit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .audit-card:hover {
+            border-color: #7f13ec;
+            transition: border-color 0.2s ease;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#141118] font-display">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#e0dbe6] px-4 md:px-10 py-3">
+<div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">fact_check</span>
+</div>
+<div>
+<h1 class="text-[#141118] text-sm md:text-lg font-bold leading-tight">Audit Eksternal Shopee</h1>
+<p class="text-xs text-[#756189] font-medium">[Nama Toko Resmi]</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden md:flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-bold hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-lg">share</span>
+                    Bagikan
+                </button>
+<button class="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all ring-2 ring-primary ring-offset-2">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Download PDF</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-5xl mx-auto py-8 px-4">
+<!-- Header Section -->
+<div class="mb-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Laporan Kepatuhan Toko</span>
+<h2 class="text-3xl md:text-4xl font-black text-[#141118] mt-2 tracking-tight">Audit Eksternal: [Nama Toko]</h2>
+<p class="text-[#756189] text-base mt-2">ID Toko: 9823102 | Periode Audit: Oktober 2023</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-medium text-[#756189]">Status Audit Terakhir</p>
+<div class="flex items-center gap-2 text-[#078847] font-bold text-lg">
+<span class="material-symbols-outlined">verified</span>
+                        Selesai - Sesuai
+                    </div>
+</div>
+</div>
+</div>
+<!-- Shop Overview / Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+<div class="bg-white p-6 rounded-xl border border-[#e0dbe6] flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-[#756189] text-sm font-medium">Total Produk Audit</p>
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+</div>
+<p class="text-3xl font-black text-[#141118]">150</p>
+<div class="flex items-center gap-1 text-[#078847] text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+5% dari bulan lalu</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#e0dbe6] flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-[#756189] text-sm font-medium">Voucher Toko Status</p>
+<span class="material-symbols-outlined text-[#7f13ec]">confirmation_number</span>
+</div>
+<p class="text-3xl font-black text-[#141118]">Aktif</p>
+<div class="flex items-center gap-1 text-[#756189] text-xs font-bold">
+<span>3 Voucher Berlangsung</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-[#e0dbe6] flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-[#756189] text-sm font-medium">Overall Compliance</p>
+<span class="material-symbols-outlined text-[#078847]">security</span>
+</div>
+<p class="text-3xl font-black text-[#141118]">92%</p>
+<div class="w-full bg-[#f2f0f4] h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-[#078847] h-full" style="width: 92%;"></div>
+</div>
+</div>
+</div>
+<!-- Section Title -->
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-[#141118] flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">list_alt</span>
+                Detail Audit Produk
+            </h3>
+<div class="flex gap-2">
+<button class="bg-white border border-[#e0dbe6] px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                </button>
+</div>
+</div>
+<!-- Product Audit List (Repeatable Cards) -->
+<!-- Top 10 Products Overview -->
+<div class="mb-10">
+<h3 class="text-xl font-bold text-[#141118] flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">star</span>
+        Top 10 Products: Video Presence
+    </h3>
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#078847]">videocam</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #1</p>
+<span class="text-[9px] text-[#078847] font-bold">VIDEO OK</span>
+</div>
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#078847]">videocam</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #2</p>
+<span class="text-[9px] text-[#078847] font-bold">VIDEO OK</span>
+</div>
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-600">videocam_off</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #3</p>
+<span class="text-[9px] text-orange-600 font-bold">MISSING</span>
+</div>
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#078847]">videocam</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #4</p>
+<span class="text-[9px] text-[#078847] font-bold">VIDEO OK</span>
+</div>
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#078847]">videocam</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #5</p>
+<span class="text-[9px] text-[#078847] font-bold">VIDEO OK</span>
+</div>
+<!-- Repeat for others or maintain structure -->
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#078847]">videocam</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #6</p>
+<span class="text-[9px] text-[#078847] font-bold">VIDEO OK</span>
+</div>
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-orange-600">videocam_off</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #7</p>
+<span class="text-[9px] text-orange-600 font-bold">MISSING</span>
+</div>
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#078847]">videocam</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #8</p>
+<span class="text-[9px] text-[#078847] font-bold">VIDEO OK</span>
+</div>
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#078847]">videocam</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #9</p>
+<span class="text-[9px] text-[#078847] font-bold">VIDEO OK</span>
+</div>
+<div class="bg-white border border-[#e0dbe6] p-3 rounded-lg text-center">
+<div class="w-full aspect-square bg-[#f2f0f4] rounded mb-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#078847]">videocam</span>
+</div>
+<p class="text-[10px] font-bold text-[#141118] truncate">Produk #10</p>
+<span class="text-[9px] text-[#078847] font-bold">VIDEO OK</span>
+</div>
+</div>
+</div><div class="space-y-6">
+<!-- Audit Item 1 -->
+<div class="audit-card bg-white rounded-xl border border-[#e0dbe6] overflow-hidden shadow-sm transition-all">
+<div class="p-6">
+<div class="flex flex-col lg:flex-row gap-6">
+<!-- Product Preview -->
+<div class="w-full lg:w-48">
+<div class="aspect-square rounded-lg bg-[#f2f0f4] overflow-hidden relative border border-[#e0dbe6]">
+<img alt="Produk Audit" class="w-full h-full object-cover" data-alt="Minimalist wrist watch product photo for audit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX59Cd8OQfE0hpC3rN8fjp8bm3HgeGKQ8F-w2ql3uF0-U_umbgEvsg9bNrdVyPw6vRRDGELUCZ74UKOwrtHi0nYvE6gtzcLWB8LrPDFDuIO4KuyArntX1l5CmVCA1tEnLvpWurC49rcO1VTbpY_5t-tjVvmOIC2cyTixKLqvyWAlQU7yIAMXoCnJcR9kczhudKs6QJyPIQ6dRi81ezlcL1hPSZ05MKseDGz8bAJMy0NdIJeHxd2yesoCV7kzY0Dw-ZvjmXd_iERSk"/>
+<div class="absolute top-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">
+                                    SKU: WTCH-01
+                                </div>
+</div>
+</div>
+<!-- Audit Details -->
+<div class="flex-1">
+<div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+<div>
+<h4 class="text-lg font-bold text-[#141118]">Smartwatch Series X - Titanium Edition</h4>
+<p class="text-sm text-[#756189]">Kategori: Elektronik &gt; Wearables</p>
+</div>
+<div class="bg-[#078847]/10 text-[#078847] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                                    AUDIT PASSED
+                                </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Media Check -->
+<div>
+<p class="text-xs font-bold text-[#756189] uppercase tracking-widest mb-3">Media Check</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-2 bg-background-light rounded-lg">
+<span class="text-sm font-medium">Video Produk</span>
+<span class="text-[10px] font-bold bg-[#078847] text-white px-2 py-0.5 rounded">YES</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-background-light rounded-lg">
+<span class="text-sm font-medium">Banner pada Foto</span>
+<span class="text-[10px] font-bold bg-[#078847] text-white px-2 py-0.5 rounded">YES</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-background-light rounded-lg">
+<span class="text-sm font-medium">Jumlah Foto</span>
+<span class="text-sm font-bold text-[#078847]">7/7</span>
+</div>
+</div>
+</div>
+<!-- Content Check -->
+<div>
+<p class="text-xs font-bold text-[#756189] uppercase tracking-widest mb-3">Content Check</p>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#078847] text-lg">check_circle</span>
+<span class="text-sm">Judul Produk Sesuai</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#078847] text-lg">check_circle</span>
+<span class="text-sm">Deskripsi Produk Sesuai</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#078847] text-lg">check_circle</span>
+<span class="text-sm">Atribut Produk Lengkap</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-[#f2f0f4] px-6 py-3 flex items-center justify-between">
+<p class="text-xs text-[#756189]">Audit oleh: <span class="font-bold">Sistem AI &amp; Auditor Internal</span></p>
+<button class="text-primary text-xs font-bold hover:underline">Lihat Log Perubahan</button>
+</div>
+</div>
+<!-- Audit Item 2 (Warning State) -->
+<div class="audit-card bg-white rounded-xl border border-[#e0dbe6] overflow-hidden shadow-sm transition-all">
+<div class="p-6">
+<div class="flex flex-col lg:flex-row gap-6">
+<div class="w-full lg:w-48">
+<div class="aspect-square rounded-lg bg-[#f2f0f4] overflow-hidden relative border border-[#e0dbe6]">
+<img alt="Produk Audit" class="w-full h-full object-cover" data-alt="Red athletic shoe product photo for audit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1I9HNdgtfN3EKmAlhvVb_4_mPMgZqJc9_GZJ26Db50ZYvmbKEhrPeAgZLcEdAwtklsxwZl4VY2wNOP_elKDA_JEK11oqXgTclmGm7P09f2-8Z4tFOYw6NWZhQZH4DZ3HW_EiSSyk8l9hk2M1aZt-MUx1UjiD0n41AjZeYiK7TzklSI0eBEKxI78UOpAb2fifH0nLxUQy6shvPfu8ahBSpCV5Y6WwSvsVOh3u1ueBNGxp3iKIUblwBbuvDt5neNRzOs9T4CfBDI-0"/>
+<div class="absolute top-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">
+                                    SKU: SHOE-R1
+                                </div>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+<div>
+<h4 class="text-lg font-bold text-[#141118]">Running Shoes Pro v2 - Crimson Red</h4>
+<p class="text-sm text-[#756189]">Kategori: Fashion &gt; Sepatu Pria</p>
+</div>
+<div class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">warning</span>
+                                    ACTION REQUIRED
+                                </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<p class="text-xs font-bold text-[#756189] uppercase tracking-widest mb-3">Media Check</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-2 bg-background-light rounded-lg">
+<span class="text-sm font-medium">Video Produk</span>
+<span class="text-[10px] font-bold bg-[#e0dbe6] text-[#756189] px-2 py-0.5 rounded">NO</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-background-light rounded-lg">
+<span class="text-sm font-medium">Banner pada Foto</span>
+<span class="text-[10px] font-bold bg-[#078847] text-white px-2 py-0.5 rounded">YES</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-background-light rounded-lg">
+<span class="text-sm font-medium">Jumlah Foto</span>
+<span class="text-sm font-bold text-orange-600">5/7</span>
+</div>
+</div>
+</div>
+<div>
+<p class="text-xs font-bold text-[#756189] uppercase tracking-widest mb-3">Content Check</p>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#078847] text-lg">check_circle</span>
+<span class="text-sm">Judul Produk Sesuai</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-orange-600 text-lg">error</span>
+<span class="text-sm text-orange-600 font-medium">Deskripsi - Kurang Informasi Garansi</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#078847] text-lg">check_circle</span>
+<span class="text-sm">Atribut Produk Lengkap</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-orange-50 px-6 py-3 flex items-center justify-between border-t border-orange-100">
+<p class="text-xs text-orange-700 font-medium">Rekomendasi: Tambahkan 2 foto detail sol &amp; video durasi 15 detik.</p>
+<button class="bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded">PERBAIKI SEKARANG</button>
+</div>
+</div>
+<!-- Audit Item 3 -->
+<div class="audit-card bg-white rounded-xl border border-[#e0dbe6] overflow-hidden shadow-sm transition-all">
+<div class="p-6">
+<div class="flex flex-col lg:flex-row gap-6">
+<div class="w-full lg:w-48">
+<div class="aspect-square rounded-lg bg-[#f2f0f4] overflow-hidden relative border border-[#e0dbe6]">
+<img alt="Produk Audit" class="w-full h-full object-cover" data-alt="Premium wireless headphones product photo for audit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNJ7FMcmWuL-M-ZJEwgSZDAwDrkEBgY3SVzySMmUgsHdE4RlixiW2i8T58qqUpTmDNMSqFNjiLiWxEfbvzaGcWSpNIUy51v4U7lXCJb6cncKcQ7oZevrVk3C5qFZV_efm3BhqcWbH8fdtXbK1ix-ErdnZEug4o9FX1mJPBoeutb2BlLBE_9N4lZ3iVTDEfiFBNyLFWYz2N-PGWCETB9pz9s421oDq0jjNmPb8Ccr16ZIUE58aB3RSfAJBYN3SCB7vqhxy6vgRa2Xo"/>
+<div class="absolute top-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">
+                                    SKU: AUDIO-H1
+                                </div>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+<div>
+<h4 class="text-lg font-bold text-[#141118]">Headset Bluetooth Hi-Fi - Midnight Black</h4>
+<p class="text-sm text-[#756189]">Kategori: Elektronik &gt; Audio</p>
+</div>
+<div class="bg-[#078847]/10 text-[#078847] px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                                    AUDIT PASSED
+                                </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<p class="text-xs font-bold text-[#756189] uppercase tracking-widest mb-3">Media Check</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-2 bg-background-light rounded-lg">
+<span class="text-sm font-medium">Video Produk</span>
+<span class="text-[10px] font-bold bg-[#078847] text-white px-2 py-0.5 rounded">YES</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-background-light rounded-lg">
+<span class="text-sm font-medium">Banner pada Foto</span>
+<span class="text-[10px] font-bold bg-[#078847] text-white px-2 py-0.5 rounded">YES</span>
+</div>
+<div class="flex items-center justify-between p-2 bg-background-light rounded-lg">
+<span class="text-sm font-medium">Jumlah Foto</span>
+<span class="text-sm font-bold text-[#078847]">7/7</span>
+</div>
+</div>
+</div>
+<div>
+<p class="text-xs font-bold text-[#756189] uppercase tracking-widest mb-3">Content Check</p>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#078847] text-lg">check_circle</span>
+<span class="text-sm">Judul Produk Sesuai</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#078847] text-lg">check_circle</span>
+<span class="text-sm">Deskripsi Produk Sesuai</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#078847] text-lg">check_circle</span>
+<span class="text-sm">Atribut Produk Lengkap</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Signature -->
+<!-- Best-Selling Products Deep Dive -->
+<div class="mt-12">
+<h3 class="text-xl font-bold text-[#141118] flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+        Best-Selling Products Deep Dive
+    </h3>
+<div class="space-y-6">
+<!-- Bestseller 1 Detailed -->
+<div class="bg-white border border-[#e0dbe6] rounded-xl overflow-hidden shadow-sm">
+<div class="bg-[#f9f8fa] border-b border-[#e0dbe6] px-5 py-3 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded">RANK #1</span>
+<h4 class="font-bold text-[#141118]">Smartwatch Series X - Titanium Edition</h4>
+</div>
+<span class="text-[10px] text-[#756189] font-bold">SKU: WTCH-01</span>
+</div>
+<div class="p-5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="space-y-3">
+<p class="text-[10px] text-[#756189] font-bold uppercase tracking-widest">Main Media</p>
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#756189]">Min. 7 Photos</span>
+<span class="text-[#078847] font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span> Found: 7</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#756189]">Video Presence</span>
+<span class="text-[#078847] font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span> YES</span>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-[10px] text-[#756189] font-bold uppercase tracking-widest">Compliance</p>
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#756189]">Standard Title</span>
+<span class="text-[#078847] font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span></span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#756189]">In-Desc Photos</span>
+<span class="text-[#078847] font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span></span>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-[10px] text-[#756189] font-bold uppercase tracking-widest">Summary</p>
+<p class="text-xs text-[#141118]">All required media and formatting criteria met.</p>
+</div>
+<div class="space-y-3">
+<p class="text-[10px] text-[#756189] font-bold uppercase tracking-widest">Status</p>
+<div class="bg-[#078847]/10 text-[#078847] p-2 rounded-lg text-center">
+<p class="text-[10px] font-black uppercase">Fully Compliant</p>
+</div>
+</div>
+</div></div>
+</div>
+<!-- Bestseller 2 Detailed -->
+<div class="bg-white border border-[#e0dbe6] rounded-xl overflow-hidden shadow-sm">
+<div class="bg-[#f9f8fa] border-b border-[#e0dbe6] px-5 py-3 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded">RANK #2</span>
+<h4 class="font-bold text-[#141118]">Headset Bluetooth Hi-Fi - Midnight Black</h4>
+</div>
+<span class="text-[10px] text-[#756189] font-bold">SKU: AUDIO-H1</span>
+</div>
+<div class="p-5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="space-y-3">
+<p class="text-[10px] text-[#756189] font-bold uppercase tracking-widest">Main Media</p>
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#756189]">Min. 7 Photos</span>
+<span class="text-[#078847] font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span> Found: 7</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#756189]">Video Presence</span>
+<span class="text-orange-600 font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm">cancel</span> NO</span>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-[10px] text-[#756189] font-bold uppercase tracking-widest">Compliance</p>
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#756189]">Standard Title</span>
+<span class="text-[#078847] font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span></span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-[#756189]">In-Desc Photos</span>
+<span class="text-orange-600 font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm">cancel</span></span>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-[10px] text-[#756189] font-bold uppercase tracking-widest">Summary</p>
+<p class="text-xs text-[#141118]">Missing product video and additional descriptive images.</p>
+</div>
+<div class="space-y-3">
+<p class="text-[10px] text-[#756189] font-bold uppercase tracking-widest">Status</p>
+<div class="bg-orange-100 text-orange-600 p-2 rounded-lg text-center">
+<p class="text-[10px] font-black uppercase">Action Needed</p>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</div><div class="mt-12 pt-8 border-t border-[#e0dbe6] mb-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<p class="text-sm font-bold text-[#141118] mb-4">Catatan Auditor:</p>
+<div class="bg-white p-4 rounded-lg border border-[#e0dbe6] text-sm text-[#756189] italic">
+                        "Secara keseluruhan, toko telah memenuhi standar visual operasional Shopee. Perbaikan minor diperlukan pada kategori Fashion untuk memastikan konversi yang optimal melalui media video."
+                    </div>
+</div>
+<div class="flex flex-col items-end">
+<p class="text-sm text-[#756189] mb-12">Jakarta, 24 Oktober 2023</p>
+<div class="text-right">
+<div class="size-20 ml-auto mb-2 opacity-30 grayscale contrast-125">
+<img alt="Signature" data-alt="Official digital signature stamp or QR code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChzVWKP7ewS0EgQepgOLMLvlSgackygVTATybJbhrVRWMq9iI3jsi0CfgO_c3x38_z-bzMTuyPvOPw0MbxBgowuSQc9aCFrNcEoYsUV9iwo4tbCYnrABD6PGGe13poZu3beNl0ZM7pXwk1k3uu9LkHskXfvKyGzBxjIPmFFUnsL7VsCfHBg3rCrcBwBeh_s6jHHWmlS10bwS7nAAQQ9GAaJqOW-B1-OyXBiChv30158ysY8KWr7yvrrH-a1T8kWka_v4-QKJwAXpo"/>
+</div>
+<p class="font-bold text-[#141118]">Budi Santoso</p>
+<p class="text-xs text-[#756189]">Lead External Auditor Shopee Indonesia</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar (Mobile Only) -->
+<div class="md:hidden fixed bottom-6 right-6">
+<button class="size-14 bg-primary text-white rounded-full flex items-center justify-center shadow-2xl">
+<span class="material-symbols-outlined text-2xl">file_download</span>
+</button>
+</div>
+</main>
+</body></html>

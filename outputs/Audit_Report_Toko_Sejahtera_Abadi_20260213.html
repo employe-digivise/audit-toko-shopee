@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Audit Eksternal Shopee - Toko Sejahtera Abadi</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- html2pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f7f6f8",
+                        "background-dark": "#191022",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .audit-card:hover {
+            border-color: #7f13ec;
+            transition: border-color 0.2s ease;
+        }
+
+        /* Print styles for PDF */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .break-inside-avoid {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background-light text-[#141118] font-display">
+
+    <div id="report-content">
+        <!-- Header -->
+        <header class="bg-white border-b border-[#e0dbe6] px-4 md:px-10 py-6">
+            <div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined text-2xl">fact_check</span>
+                    </div>
+                    <div>
+                        <h1 class="text-[#141118] text-xl font-bold leading-tight">Audit Eksternal Shopee</h1>
+                        <p class="text-sm text-[#756189] font-medium">Toko Sejahtera Abadi</p>
+                    </div>
+                </div>
+
+                <div class="no-print">
+                    <button onclick="downloadPDF()"
+                        class="flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all ring-2 ring-primary ring-offset-2">
+                        <span class="material-symbols-outlined text-lg">download</span>
+                        <span>Download PDF</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-5xl mx-auto py-8 px-4">
+
+            <!-- Introduction -->
+            <div class="mb-8 flex justify-between items-end">
+                <div>
+                    <span
+                        class="bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Laporan
+                        Kepatuhan Toko</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-[#141118] mt-2 tracking-tight">Audit Eksternal: Toko Sejahtera Abadi</h2>
+                    <p class="text-[#756189] text-base mt-2">Periode Audit: Februari 2026</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm font-medium text-[#756189] mb-1">Status Audit</p>
+                    <div class="flex items-center justify-end gap-2 text-[#7f13ec] font-bold text-lg">
+                        <span class="material-symbols-outlined">pending_actions</span>
+                        In Progress
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW AUDIT CRITERIA SECTION (Replaces old metrics grid) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 w-full">
+
+                <!-- Criteria 1: Judul Produk (SEO) -->
+                <div class="bg-white p-6 rounded-xl border border-[#e0dbe6] shadow-sm break-inside-avoid">
+                    <div class="flex items-center gap-3 mb-4 border-b border-[#e0dbe6] pb-3">
+                        <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                            <span class="material-symbols-outlined">title</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#141118]">1. Judul Produk (SEO)</h3>
+                    </div>
+
+                    <div class="space-y-3 pl-1">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-0.5 min-w-[20px]">
+                                <span
+                                    class="material-symbols-outlined text-[#756189] text-lg">check_box_outline_blank</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-[#141118]">Struktur Judul</p>
+                                <p class="text-xs text-[#756189] mt-0.5">Rumus: Brand + Kategori + Model + Varian + Kata
+                                    Kunci Pencarian</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="mt-0.5 min-w-[20px]">
+                                <span
+                                    class="material-symbols-outlined text-[#756189] text-lg">check_box_outline_blank</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-[#141118]">Tidak Spamming Kata Kunci</p>
+                                <p class="text-xs text-[#756189] mt-0.5">Hindari pengulangan kata kunci yang
+                                    berlebihan/tidak relevan.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="mt-0.5 min-w-[20px]">
+                                <span
+                                    class="material-symbols-outlined text-[#756189] text-lg">check_box_outline_blank</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-[#141118]">Relevan</p>
+                                <p class="text-xs text-[#756189] mt-0.5">Kata kunci sesuai dengan produk fisik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Criteria 2: Konten Deskripsi -->
+                <div class="bg-white p-6 rounded-xl border border-[#e0dbe6] shadow-sm break-inside-avoid">
+                    <div class="flex items-center gap-3 mb-4 border-b border-[#e0dbe6] pb-3">
+                        <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                            <span class="material-symbols-outlined">description</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#141118]">2. Konten Deskripsi</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 pl-1">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[#756189] text-lg">check_box_outline_blank</span>
+                            <span class="text-sm font-medium text-[#141118]">Manfaat Produk</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[#756189] text-lg">check_box_outline_blank</span>
+                            <span class="text-sm font-medium text-[#141118]">Spesifikasi Produk</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[#756189] text-lg">check_box_outline_blank</span>
+                            <span class="text-sm font-medium text-[#141118]">Size Chart (Opsional)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[#756189] text-lg">check_box_outline_blank</span>
+                            <span class="text-sm font-medium text-[#141118]">Jadwal Pengiriman</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="material-symbols-outlined text-[#756189] text-lg">check_box_outline_blank</span>
+                            <span class="text-sm font-medium text-[#141118]">Kebijakan Return</span>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-1 sm:col-span-2">
+                            <span
+                                class="material-symbols-outlined text-[#756189] text-lg">check_box_outline_blank</span>
+                            <span class="text-sm font-medium text-[#141118]">Deskripsi Gambar (Shopee Mall)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Section Products -->
+            <h3
+                class="text-xl font-bold text-[#141118] flex items-center gap-2 mb-6 border-t border-[#e0dbe6] pt-8 break-inside-avoid">
+                <span class="material-symbols-outlined text-primary">inventory_2</span>
+                Daftar Produk Terindikasi
+            </h3>
+
+            <!-- Product List Loop -->
+            <div class="space-y-6">
+                
+                <div
+                    class="audit-card bg-white rounded-xl border border-[#e0dbe6] overflow-hidden shadow-sm break-inside-avoid p-5 flex flex-col md:flex-row gap-5">
+                    <!-- Image -->
+                    <div
+                        class="w-full md:w-32 h-32 bg-gray-100 rounded-lg shrink-0 overflow-hidden border border-[#e0dbe6]">
+                        
+                        <img src="https://dummyimage.com/400x400/eeeeee/000000&text=Product+Image" alt="Product Image" class="w-full h-full object-cover">
+                        
+                    </div>
+
+                    <!-- Info -->
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-[#141118] text-base line-clamp-2">Kemeja Flannel Pria Premium - Kotak Merah</h4>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">KMJ-001</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-[#756189] uppercase tracking-wider">Judul Check</p>
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span
+                                        class="material-symbols-outlined text-green-600 text-sm">
+                                        check_circle
+                                    </span>
+                                    <span>Struktur Sesuai</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-[#756189] uppercase tracking-wider">Deskripsi Check
+                                </p>
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span
+                                        class="material-symbols-outlined text-green-600 text-sm">
+                                        check_circle
+                                    </span>
+                                    <span>Lengkap</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div
+                            class="mt-3 bg-blue-50 p-2 rounded text-xs text-blue-800 border border-blue-100">
+                            <strong>Catatan:</strong> Produk sudah optimal.
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div
+                    class="audit-card bg-white rounded-xl border border-[#e0dbe6] overflow-hidden shadow-sm break-inside-avoid p-5 flex flex-col md:flex-row gap-5">
+                    <!-- Image -->
+                    <div
+                        class="w-full md:w-32 h-32 bg-gray-100 rounded-lg shrink-0 overflow-hidden border border-[#e0dbe6]">
+                        
+                        <div class="flex items-center justify-center h-full text-gray-400">
+                            <span class="material-symbols-outlined">image_not_supported</span>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Info -->
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-[#141118] text-base line-clamp-2">Sepatu Running</h4>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">SPT-run</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-[#756189] uppercase tracking-wider">Judul Check</p>
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span
+                                        class="material-symbols-outlined text-orange-600 text-sm">
+                                        warning
+                                    </span>
+                                    <span>Struktur Tidak Sesuai</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-[#756189] uppercase tracking-wider">Deskripsi Check
+                                </p>
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span
+                                        class="material-symbols-outlined text-orange-600 text-sm">
+                                        warning
+                                    </span>
+                                    <span>Kurang Lengkap</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div
+                            class="mt-3 bg-orange-50 p-2 rounded text-xs text-orange-800 border border-orange-100">
+                            <strong>Catatan:</strong> Judul terlalu pendek, tidak mengikuti rumus. Deskripsi kurang spesifik.
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div
+                    class="audit-card bg-white rounded-xl border border-[#e0dbe6] overflow-hidden shadow-sm break-inside-avoid p-5 flex flex-col md:flex-row gap-5">
+                    <!-- Image -->
+                    <div
+                        class="w-full md:w-32 h-32 bg-gray-100 rounded-lg shrink-0 overflow-hidden border border-[#e0dbe6]">
+                        
+                        <img src="https://dummyimage.com/400x400/eeeeee/000000&text=Watch" alt="Product Image" class="w-full h-full object-cover">
+                        
+                    </div>
+
+                    <!-- Info -->
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-[#141118] text-base line-clamp-2">Jam Tangan Sporty Waterproof</h4>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">WTC-099</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-[#756189] uppercase tracking-wider">Judul Check</p>
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span
+                                        class="material-symbols-outlined text-green-600 text-sm">
+                                        check_circle
+                                    </span>
+                                    <span>Struktur Sesuai</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="text-[10px] font-bold text-[#756189] uppercase tracking-wider">Deskripsi Check
+                                </p>
+                                <div class="flex items-center gap-2 text-xs">
+                                    <span
+                                        class="material-symbols-outlined text-orange-600 text-sm">
+                                        warning
+                                    </span>
+                                    <span>Kurang Lengkap</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div
+                            class="mt-3 bg-orange-50 p-2 rounded text-xs text-orange-800 border border-orange-100">
+                            <strong>Catatan:</strong> Deskripsi kekurangan informasi garansi.
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-12 pt-8 border-t border-[#e0dbe6] text-center text-xs text-[#756189] break-inside-avoid">
+                <p>Generated by Shopee Audit System | 13 February 2026</p>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            const element = document.getElementById('report-content');
+            const opt = {
+                margin: [10, 10], // top, left, bottom, right (mm) - adjusted for better fit
+                filename: 'Audit_Laporan_Toko_Sejahtera_Abadi.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, logging: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            // Add loading state to button
+            const btn = document.querySelector('button[onclick="downloadPDF()"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Generating...';
+            btn.disabled = true;
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        }
+    </script>
+
+</body>
+
+</html>

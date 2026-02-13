@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  audit-report-server:
+    build: .
+    ports:
+      - "1101:1101"
+    volumes:
+      - ./outputs:/app/outputs
+    restart: always
+    environment:
+      - PYTHONUNBUFFERED=1
