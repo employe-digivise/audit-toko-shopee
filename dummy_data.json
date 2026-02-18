@@ -1,0 +1,24 @@
+{
+    "shop_name": "Toko Dummy Data Image",
+    "audit_period": "Februari 2026",
+    "products": [
+        {
+            "name": "Produk Dummy Utama",
+            "sku": "DUMMY-001",
+            "image_url": "image.png",
+            "title_ok": true,
+            "desc_ok": true,
+            "video_ok": true,
+            "notes": "Ini adalah produk dummy dengan gambar custom."
+        },
+        {
+            "name": "Produk Dummy Kedua",
+            "sku": "DUMMY-002",
+            "image_url": "image.png",
+            "title_ok": false,
+            "desc_ok": true,
+            "video_ok": false,
+            "notes": "Produk dummy kedua."
+        }
+    ]
+}

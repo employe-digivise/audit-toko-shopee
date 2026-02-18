@@ -15,12 +15,20 @@ The request body must be a JSON object with the following structure:
 ```json
 {
   "shop_name": "Toko Sejahtera Abadi",
+  "shop_name": "Toko Sejahtera Abadi",
   "audit_period": "Februari 2026",
+  "audit_date": "2026-02-18",
   "products": [
     {
       "name": "Product Name",
       "sku": "SKU-123",
+      "sku": "SKU-123",
       "image_url": "https://example.com/image.jpg",
+      "cover_image": "https://example.com/cover.jpg",
+      "variation_images": [
+        "https://example.com/var1.jpg",
+        "https://example.com/var2.jpg"
+      ],
       "title_ok": true,
       "desc_ok": false,
       "video_ok": true,
@@ -35,7 +43,8 @@ The request body must be a JSON object with the following structure:
 | Field | Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `shop_name` | String | Yes | Name of the shop being audited. |
-| `audit_period` | String | No | Period string (e.g. "March 2026"). Defaults to current month if omitted. |
+| `audit_period` | String | No | Period string for display (e.g. "March 2026"). Defaults to current month. |
+| `audit_date` | String | No | Date string (YYYY-MM-DD) to force deterministic output filename. |
 | `products` | Array | Yes | List of product objects (see below). |
 
 **Product Object:**
@@ -44,7 +53,9 @@ The request body must be a JSON object with the following structure:
 | :--- | :--- | :--- | :--- |
 | `name` | String | Yes | Full product title. |
 | `sku` | String | No | Stock Keeping Unit identifier. |
-| `image_url` | String | No | URL to product image. Empty string allows placeholder. |
+| `image_url` | String | No | **Deprecated**. Use `cover_image` instead. |
+| `cover_image` | String | No | URL/Path to the main product cover image. |
+| `variation_images` | Array | No | List of URLs/Paths for product variation images (up to 8 recommended). |
 | `title_ok` | Boolean | Yes | `true` if title meets SEO criteria, else `false`. |
 | `desc_ok` | Boolean | Yes | `true` if description is complete, else `false`. |
 | `video_ok` | Boolean | Yes | `true` if video exists, else `false`. |

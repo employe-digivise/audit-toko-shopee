@@ -1,0 +1,16 @@
+{
+    "shop_name": "Toko Deterministic JSON",
+    "audit_period": "Maret 2030",
+    "audit_date": "2030-03-01",
+    "products": [
+        {
+            "name": "Produk Test Deterministic",
+            "sku": "DET-001",
+            "image_url": "image.png",
+            "title_ok": true,
+            "desc_ok": true,
+            "video_ok": true,
+            "notes": "Testing deterministic filename."
+        }
+    ]
+}

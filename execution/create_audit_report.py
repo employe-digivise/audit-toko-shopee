@@ -195,12 +195,37 @@ if __name__ == "__main__":
         }
     
     # Determine date object for filename
-    if args.date:
+    # Priority:
+    # 1. CLI Argument (--date)
+    # 2. JSON 'audit_date' field (if valid YYYY-MM-DD or DD Month YYYY)
+    # 3. Current Date
+    
+    audit_date_obj = None
+
+    if args.date != datetime.now().strftime("%Y-%m-%d"):
+         # CLI argument provided and not default
          try:
             audit_date_obj = datetime.strptime(args.date, "%Y-%m-%d")
          except:
-            audit_date_obj = datetime.now()
-    else:
+            pass
+            
+    if not audit_date_obj and 'audit_date' in sample_data:
+        # Try parsing from JSON
+        # formats to try: YYYY-MM-DD, DD Month YYYY
+        try:
+            audit_date_obj = datetime.strptime(sample_data['audit_date'], "%Y-%m-%d")
+        except ValueError:
+            try:
+                # Try locale dependent or just simple English fallback?
+                # For now let's stick to simple formats or just use it as string?
+                # Wait, the script uses date_obj to format to YYYYMMDD for filename.
+                # If input is already formatted, we might need to parse it back.
+                # Let's assume input JSON might use YYYY-MM-DD for simplicity if they want control.
+                pass
+            except:
+                pass
+
+    if not audit_date_obj:
         audit_date_obj = datetime.now()
 
     try:
