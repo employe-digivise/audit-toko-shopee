@@ -55,6 +55,10 @@ def main():
     # 4. Push
     print(f"\n--- 4. Pushing to origin/{args.branch} ---")
     try:
+        # Pull first to avoid conflicts
+        print("Pulling latest changes...")
+        run_command(f"git pull origin {args.branch} --rebase")
+        
         run_command(f"git push origin {args.branch}")
         print("\nSUCCESS: Changes pushed to GitHub.")
     except Exception as e:

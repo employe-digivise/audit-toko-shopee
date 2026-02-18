@@ -1,6 +1,9 @@
 
 import os
-from flask import Flask, send_from_directory, render_template_string
+import glob
+import subprocess
+import json
+from flask import Flask, send_from_directory, render_template_string, request, jsonify
 
 app = Flask(__name__)
 
@@ -62,6 +65,64 @@ def index():
 def serve_report(filename):
     """Serve a specific report file."""
     return send_from_directory(OUTPUT_DIR, filename)
+
+@app.route('/api/generate', methods=['POST'])
+def api_generate_report():
+    """
+    API Endpoint to generate a report from JSON data.
+    """
+    try:
+        data = request.get_json(force=True)
+        if not data:
+             return jsonify({"status": "error", "message": "No JSON data provided"}), 400
+             
+        # Create temp file
+        temp_dir = os.path.join(BASE_DIR, '.tmp')
+        os.makedirs(temp_dir, exist_ok=True)
+        timestamp = int(os.path.getmtime(os.path.abspath(__file__))) # just a number
+        from datetime import datetime
+        timestamp_str = datetime.now().strftime("%Y%m%d%H%M%S")
+        
+        input_file = os.path.join(temp_dir, f"input_{timestamp_str}.json")
+        with open(input_file, 'w', encoding='utf-8') as f:
+            json.dump(data, f)
+            
+        # Run generation script
+        script_path = os.path.join(BASE_DIR, 'execution', 'create_audit_report.py')
+        
+        # We start the script as a separate process to avoid blocking too much (though verify waits)
+        # For simplicity in this v1, we block to return the result immediately.
+        cmd = ["python", script_path, "--input-json", input_file]
+        
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        
+        if result.returncode != 0:
+             return jsonify({"status": "error", "message": "Generation failed", "details": result.stderr}), 500
+             
+        # Extract filename from stdout or predict it
+        # The script prints "Report generated successfully: ...path..."
+        # But we can also look for the newest file in outputs/
+        
+        # Get newest file in output dir
+        list_of_files = glob.glob(os.path.join(OUTPUT_DIR, '*.html')) 
+        if not list_of_files:
+            return jsonify({"status": "error", "message": "Report not created"}), 500
+            
+        latest_file = max(list_of_files, key=os.path.getctime)
+        filename = os.path.basename(latest_file)
+        
+        # Clean up temp input
+        # os.remove(input_file) # Optional: keep for debugging
+        
+        return jsonify({
+            "status": "success",
+            "message": "Report generated successfully",
+            "report_url": f"{request.host_url}view/{filename}?t={timestamp_str}",
+            "filename": filename
+        })
+        
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
     print(f"Starting server on port {PORT}...")

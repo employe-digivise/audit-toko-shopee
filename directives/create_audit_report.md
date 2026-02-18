@@ -41,10 +41,14 @@ The `sample_data` dictionary in `execution/create_audit_report.py` must include:
 ## Execution
 Run the script to generate the HTML report in the `outputs/` directory.
 ```bash
+# Default (Toko Sejahtera Abadi, Current Date)
 python execution/create_audit_report.py
+
+# Deterministic / Custom
+python execution/create_audit_report.py --shop "Toko Maju Jaya" --date "2026-03-01"
 ```
 3. The script will render `execution/templates/report_template.html`.
-4. Output will be saved to `outputs/Audit_Report_[ShopName]_[Date].html`.
+4. Output will be saved to `outputs/Audit_Report_[Shop_Name]_[YYYYMMDD].html`.
 
 ## Outputs
 - **Result**: An HTML file in `outputs/`.

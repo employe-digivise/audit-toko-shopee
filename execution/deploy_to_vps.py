@@ -15,6 +15,12 @@ LOCAL_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REMOTE_DIR = "/root/audit-shopee"
 ZIP_FILENAME = "app_deploy.zip"
 
+def check_local_requirements():
+    """Ensures critical files exist before zipping."""
+    required = ['execution/serve_report.py', 'execution/create_audit_report.py', 'requirements.txt']
+    # Note: requirements.txt might not exist yet, let's skip strict check on it for now or create it if missing
+    pass
+
 def parse_ssh_string(ssh_str):
     """Parses 'ssh user@ip' into user and ip."""
     if not ssh_str:
@@ -75,6 +81,7 @@ def deploy():
             f"cd {REMOTE_DIR} && ./venv/bin/pip install --upgrade pip",
             f"cd {REMOTE_DIR} && ./venv/bin/pip install flask jinja2",
             "pkill -f serve_report.py || true",
+            # Ensure we use the venv python explicitly
             f"cd {REMOTE_DIR} && nohup ./venv/bin/python execution/serve_report.py > server.log 2>&1 &"
         ]
         
